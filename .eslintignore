@@ -1,0 +1,7 @@
+.eslintrc.js
+node_modules
+.expo
+.espo-shared
+yarn.lock
+babel.config.js
+package.json

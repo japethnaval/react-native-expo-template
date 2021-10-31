@@ -1,25 +1,86 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "cross-env NODE_ENV=development expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint src/**/*.{js,ts,tsx} --quiet --fix",
+    "test": "jest --coverage --silent"
   },
   "dependencies": {
     "expo": "~43.0.0",
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react-dom": "^17.0.2",
     "react-native": "0.64.2",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@types/enzyme": "^3.10.10",
+    "@types/jest": "^27.0.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
+    "@types/react-native-dotenv": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "husky": "^4.3.8",
+    "jest": "26.6.3",
+    "jest-fetch-mock": "^3.0.3",
+    "jsdom": "^18.0.0",
+    "prettier": "^2.4.1",
+    "react-native-dotenv": "^3.2.0",
+    "ts-jest": "^26.4.2",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
+  },
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "./tsconfig.jest.json"
+      }
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./setup-enzyme.js"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(@react-native|react-native)/).*/"
+    ]
+  }
 }
