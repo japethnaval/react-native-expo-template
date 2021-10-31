@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button Rendering should match to snapshot 1`] = `
-<Text>
-   
-  test label
-   
-</Text>
+<ForwardRef>
+  <Text>
+     
+    test label
+     
+  </Text>
+</ForwardRef>
 `;

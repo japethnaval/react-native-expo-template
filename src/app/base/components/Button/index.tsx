@@ -1,12 +1,16 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 
 interface IProps {
   text: string
 }
 
 export const Button: React.FC<IProps> = ({ text }) => {
-  return <Text> {text} </Text>
+  return (
+    <TouchableOpacity>
+      <Text> {text} </Text>
+    </TouchableOpacity>
+  )
 }
 
 export default Button
