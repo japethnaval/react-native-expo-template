@@ -13,12 +13,13 @@ module.exports = {
   },
   "rules": {
    // This is covered by TS interfaces instead
-   'react/jsx-props-no-spreading': ['off'],
+   "react/jsx-props-no-spreading": ['off'],
     "react/prop-types": 'off',
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/no-named-as-default": ["off"],
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    "@typescript-eslint/explicit-function-return-type": 'off',
+    "react/require-default-props": 'off',
+    "prettier/prettier": ['error', { endOfLine: 'auto' }],
     "no-restricted-imports": ["error", {
       "paths": [{
         "name": "@material-ui/core",

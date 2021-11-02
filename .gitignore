@@ -21,3 +21,8 @@ coverage/
 
 # cross environment
 environments
+
+# android
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/*.iws

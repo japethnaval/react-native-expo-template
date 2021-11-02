@@ -1,8 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button Rendering should match to snapshot 1`] = `
-<ForwardRef>
-  <Text>
+<ForwardRef
+  style={
+    Object {
+      "backgroundColor": "blue",
+      "borderRadius": 5,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "textAlign": "center",
+      }
+    }
+  >
      
     test label
      
