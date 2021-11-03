@@ -1,17 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedbackProps } from 'react-native'
 import styles from './styles'
 
 type IVariant = 'danger' | 'success' | 'warning' | 'default'
 
-interface IProps {
+interface IProps extends TouchableWithoutFeedbackProps {
   text: string
   variant?: IVariant
 }
 
-export const Button: React.FC<IProps> = ({ text, variant = 'default' }) => {
+export const Button: React.FC<IProps> = ({ text, variant = 'default', ...props }) => {
   return (
-    <TouchableOpacity style={StyleSheet.flatten([styles.base, styles[variant]])}>
+    <TouchableOpacity {...props} style={StyleSheet.flatten([styles.base, styles[variant]])}>
       <Text style={styles.text}> {text} </Text>
     </TouchableOpacity>
   )

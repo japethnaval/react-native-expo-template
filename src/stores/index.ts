@@ -9,7 +9,7 @@ class Stores {
 
   public isInitialized = false
 
-  public init(): void {
+  public init = (): void => {
     this.storeKeys = Object.keys(StoreIndex) as Array<keyof StoreData>
     const rootStore = this as unknown as RootStore
 

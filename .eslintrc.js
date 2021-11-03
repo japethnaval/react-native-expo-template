@@ -19,6 +19,7 @@ module.exports = {
     "import/no-named-as-default": ["off"],
     "@typescript-eslint/explicit-function-return-type": 'off',
     "react/require-default-props": 'off',
+    "class-methods-use-this": 'off',
     "prettier/prettier": ['error', { endOfLine: 'auto' }],
     "no-restricted-imports": ["error", {
       "paths": [{

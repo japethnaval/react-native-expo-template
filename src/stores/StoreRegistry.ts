@@ -26,6 +26,6 @@ export const StoreIndex: StoreIndex = {
 }
 
 export interface StoreData {
-  authStore: Partial<{ role: string }>
-  persistedStore: Partial<{ defaultLanguage: string }>
+  authStore: Partial<any>
+  persistedStore: Partial<any>
 }

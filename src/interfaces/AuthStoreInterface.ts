@@ -1,8 +1,6 @@
 export interface AuthStoreInterface {
-  accessToken: string
   isAuthenticated: boolean
+  accessToken?: string
   expiry?: Date
-
-  login(): Promise<void>
-  logout(): Promise<void>
+  login(username?: string, password?: string): Promise<void>
 }

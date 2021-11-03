@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { observer } from 'mobx-react'
 
 import AuthStackNavigator from './AuthStack'
 import RootStackNavigator from './RootStack'
+import useStores from '../hooks/useStores'
 
 const Stack = createNativeStackNavigator()
 
 export const NavigationContainerStack: React.FC = () => {
-  const [loginState] = useState<boolean>(false)
+  const {
+    authStore: { isAuthenticated },
+  } = useStores()
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={DefaultTheme}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}
       >
-        {loginState ? (
+        {isAuthenticated ? (
           <Stack.Screen name="RootStack" component={RootStackNavigator} />
         ) : (
           <Stack.Screen name="AuthStack" component={AuthStackNavigator} />
@@ -27,4 +32,4 @@ export const NavigationContainerStack: React.FC = () => {
   )
 }
 
-export default NavigationContainerStack
+export default observer(NavigationContainerStack)

@@ -1,12 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react'
-
+import React, { useCallback, useState } from 'react'
 import { View } from 'react-native'
+import get from 'lodash/get'
+import { observer } from 'mobx-react'
+import useStores from '../../../hooks/useStores'
 import { Button, Textfield } from '../../base/components'
+
 import styles from './styles'
 
 export const Login: React.FC = () => {
+  const {
+    authStore: { login },
+  } = useStores()
+
   const [values, setValues] = useState<{
-    [key: string]: string | number
+    [key: string]: string
   }>()
 
   const handleInputChange = useCallback(
@@ -19,15 +26,19 @@ export const Login: React.FC = () => {
     [setValues]
   )
 
-  useEffect(() => console.log('[LOGIN VALUES]', values), [values])
+  const handleLogin = useCallback(
+    // eslint-disable-next-line no-return-await
+    async () => await login(get(values, 'username'), get(values, 'password')),
+    [login, values]
+  )
 
   return (
     <View style={styles.base}>
-      <Textfield onChangeText={handleInputChange('name')} />
-      <Textfield onChangeText={handleInputChange('password')} />
-      <Button text="Login" />
+      <Textfield onChangeText={handleInputChange('username')} />
+      <Textfield secureTextEntry onChangeText={handleInputChange('password')} />
+      <Button text="Login" onPress={handleLogin} />
     </View>
   )
 }
 
-export default Login
+export default observer(Login)
