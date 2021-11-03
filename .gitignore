@@ -15,14 +15,8 @@ yarn-error.log
 .DS_Store
 
 # Jest
-#
 .jest/
 coverage/
 
 # cross environment
 environments
-
-# android
-**/.idea/workspace.xml
-**/.idea/tasks.xml
-**/.idea/*.iws
